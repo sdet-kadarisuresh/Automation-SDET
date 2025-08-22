@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Testing {
+public class LoginPage {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -32,7 +32,27 @@ public class Testing {
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	WebElement txt = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[@class='error']")));
 	System.out.println(txt.getText());
+	
+	driver.findElement(By.linkText("Forgot your password?")).click();
+	
+	WebElement name=driver.findElement(By.cssSelector("input[placeholder='Name']"));
+			name.sendKeys("suresh");
+	
+	WebElement email=driver.findElement(By.xpath("//input[@placeholder='Email']"));
+		email.sendKeys("suresh2k02@gmail.com");
+	
+		WebElement ph=driver.findElement(By.xpath("//input[@placeholder='Phone Number']"));
+		ph.sendKeys("9876543210");
+		
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
+		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='reset-pwd-btn']")));
+		btn.click();
+
+		
+	WebElement msg=	driver.findElement(By.xpath("//p[@class='infoMsg']"));
+	System.out.println(msg.getText());
 	}
 
 }
